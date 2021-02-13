@@ -1,16 +1,16 @@
-import utilities as utils
+import utilities                 as utils
 import colorspace_discretization as csd
-import slic_superpixels as ssp
-import extract_features as ef
+import slic_superpixels          as ssp
+import extract_features          as ef
 import svm
-from os import path
+import os
 import warnings
 
 if __name__ == "__main__":
     warnings.filterwarnings("ignore")
 
     SUPERPIXELS_NUM = 100
-    TESTING_IMAGE = "assets\\sample_img.jpg"
+    SAMPLE_IMAGE = "assets\\sample_img.jpg"
 
     print("TRAINING STARTED")
 
@@ -19,7 +19,7 @@ if __name__ == "__main__":
     lab_images = []
 
     # Loading all training images
-    for i in range(1, 11):
+    for i in range(1, len(os.listdir("assets"))):
         temp_image = utils.load_rgb_image("assets\\" + str(i) + ".jpg")
         rgb_images.append(temp_image)
         temp_image = utils.rgb2lab(temp_image)
@@ -28,7 +28,7 @@ if __name__ == "__main__":
     # Fit kmeans and save it with pickle
     csd.fit_and_save_kmeans(lab_images)
 
-    if path.exists("SVC.sav"):
+    if os.path.exists("SVC.sav"):
         print("The fitted SVM was already saved, if you want to repeat the process you need to delete the file and "
               "restart.")
     else:
@@ -57,7 +57,7 @@ if __name__ == "__main__":
     kmeans = csd.load_kmeans()
 
     # Load test image of car and make it grayscale
-    colored_img = utils.load_rgb_image(TESTING_IMAGE)
+    colored_img = utils.load_rgb_image(SAMPLE_IMAGE)
     gray_img = utils.rgb2gray(colored_img)
 
     # SLIC segmentation and feature extraction per superpixel

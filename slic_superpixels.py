@@ -1,5 +1,5 @@
 from skimage.segmentation import slic, mark_boundaries
-import image_functions as imf
+import utilities as imf
 import cv2
 import numpy as np
 

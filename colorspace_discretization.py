@@ -6,9 +6,10 @@ from os import path
 
 def fit_and_save_kmeans(lab_images):
     if path.exists("fitted_kmeans.sav"):
-        print("Fitted kmeans already saved -- If you wish to fit again stop execution, delete the file and rerun!")
+        print("The fitted KMeans was already saved, if you want to repeat the process you need to delete the file and "
+              "restart.")
         return
-    print("Fitting kmeans...")
+    print("[!] Fitting KMeans [!]")
     kmeans = KMeans(n_clusters=16)
     # Reshaping lab images as feature vector
     ab_values = []

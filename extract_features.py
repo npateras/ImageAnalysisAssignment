@@ -1,5 +1,5 @@
 from mahotas.features import surf
-import image_functions as imf
+import utilities as imf
 from skimage.filters import gabor
 
 
@@ -10,11 +10,11 @@ def extract_surf(image):
 
 # Extracting SURF for each superpixel and after making it grayscale
 def extract_surf_for_each_superpixel(superpixels_list, gray=False):
-    print("Extracting SURF features...")
+    print("[!] Extracting SURF features [!]")
     surf_of_superpixels = []
     for superpixel in superpixels_list:
         if not gray:
-            gray_superpixel = imf.rgb_to_gray(superpixel)
+            gray_superpixel = imf.rgb2gray(superpixel)
         else:
             gray_superpixel = superpixel
         points = extract_surf(gray_superpixel)
@@ -30,11 +30,11 @@ def extract_gabor(image, freq=0.6):
 
 # Extracting Gabor for each superpixel and after making it grayscale
 def extract_gabor_for_each_superpixel(superpixels_list, gray=False):
-    print("Extracting Gabor features...")
+    print("[!] Extracting Gabor features [!]")
     gabor_of_superpixels = []
     for superpixel in superpixels_list:
         if not gray:
-            gray_superpixel = imf.rgb_to_gray(superpixel)
+            gray_superpixel = imf.rgb2gray(superpixel)
         else:
             gray_superpixel = superpixel
         filters = extract_gabor(gray_superpixel)

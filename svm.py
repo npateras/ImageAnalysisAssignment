@@ -2,7 +2,7 @@ from sklearn.svm import LinearSVC
 from sklearn.svm import SVC
 import numpy as np
 import colorspace_discretization as csd
-import image_functions as imf
+import utilities as imf
 import pickle
 from os import path
 
@@ -37,7 +37,7 @@ def fit_and_save_svm(superpixels_list, surf_list, gabor_list):
 
         # We find the dominant color of the superpixel
         color_of_sp = superpixels_list[i]
-        color_of_sp = imf.rgb_to_lab(color_of_sp)
+        color_of_sp = imf.rgb2lab(color_of_sp)
         color_of_sp = color_of_sp.reshape((color_of_sp.shape[0] * color_of_sp.shape[1]), 3)
         temp = []
         for j in color_of_sp:

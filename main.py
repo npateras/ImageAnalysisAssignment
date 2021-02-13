@@ -5,23 +5,23 @@ import extract_features as ef
 import svm
 from os import path
 import numpy as np
+import warnings
 
 if __name__ == "__main__":
-    import warnings
     warnings.filterwarnings("ignore")
 
     SUPERPIXELS_NUM = 100
-    TESTING_IMAGE = "Dataset\\Testing.png"
+    TESTING_IMAGE = "assets\\sample_img.jpg"
 
-    print("TRAINING")
+    print("TRAINING STARTED")
 
-    # Load train image of castle
+    # array initialization
     rgb_images = []
     lab_images = []
 
     # Loading all training images
-    for i in range(1, 14):
-        temp_image = imf.load_rgb_image("Dataset\\" + str(i) + ".png")
+    for i in range(1, 11):
+        temp_image = imf.load_rgb_image("assets\\" + str(i) + ".jpg")
         rgb_images.append(temp_image)
         temp_image = imf.rgb_to_lab(temp_image)
         lab_images.append(temp_image)

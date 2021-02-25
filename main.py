@@ -1,5 +1,5 @@
 import utilities                 as utils
-import colorspace_discretization as csd
+import image_segmentation as csd
 import slic_superpixels          as ssp
 import extract_features          as ef
 import svm
@@ -12,7 +12,7 @@ if __name__ == "__main__":
     SUPERPIXELS_NUM = 100
     SAMPLE_IMAGE = "assets\\sample_img.jpg"
 
-    print("TRAINING STARTED")
+    print("\nTRAINING STARTED")
 
     # arrays initialization
     rgb_images = []
@@ -65,11 +65,11 @@ if __name__ == "__main__":
     surf = ef.extract_surf_for_each_superpixel(slic, True)
     gabor = ef.extract_gabor_for_each_superpixel(slic, True)
 
-    print("[!] Preparing test samples [!]")
+    print("[!] Preparing testing samples [!]")
     test_sample = svm.prepare_test_sample(slic, surf, gabor)
-    print("Test samples prepared!")
+    print("Testing samples have been prepared!")
     predictions = svc.predict(test_sample)
-    print("Colors predicted!")
+    print("Colors have been predicted successfully!")
     colors = kmeans.cluster_centers_.astype("uint8")[predictions]
 
     utils.display_end_result(colored_img, gray_img, colors)

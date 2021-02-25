@@ -1,7 +1,7 @@
 from sklearn.svm import LinearSVC
 from sklearn.svm import SVC
 import numpy as np
-import colorspace_discretization as csd
+import image_segmentation as csd
 import utilities as imf
 import pickle
 from os import path

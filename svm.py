@@ -11,7 +11,7 @@ def fit_and_save_svm(superpixels_list, surf_list, gabor_list):
     if path.exists("SVC.sav"):
         print("Fitted SVM already saved -- If you wish to fit again stop execution, delete the file and rerun!")
         return
-    print("Started fitting SVM...")
+    print("[!] Started fitting SVM [!]")
     # Using LinearSVC because it's using 'one-vs-the-rest' multi-class strategy
     classifier = SVC(class_weight='balanced')
     loaded_kmeans = csd.load_kmeans()

@@ -8,6 +8,11 @@ def extract_surf(image):
     return interest_points
 
 
+def extract_gabor(image, freq=0.6):
+    filter_real, filter_imaginary = gabor(image, frequency=freq)
+    return filter_real
+
+
 # Extracting SURF for each superpixel and after making it grayscale
 def extract_surf_for_each_superpixel(superpixels_list, gray=False):
     print("[!] Extracting SURF features [!]")
@@ -21,11 +26,6 @@ def extract_surf_for_each_superpixel(superpixels_list, gray=False):
         surf_of_superpixels.append(points)
     print("SURF extraction finished!")
     return surf_of_superpixels
-
-
-def extract_gabor(image, freq=0.6):
-    filter_real, filter_imaginary = gabor(image, frequency=freq)
-    return filter_real
 
 
 # Extracting Gabor for each superpixel and after making it grayscale

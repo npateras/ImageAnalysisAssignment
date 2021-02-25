@@ -1,7 +1,7 @@
 import utilities                 as utils
-import image_segmentation as csd
+import image_segmentation        as csd
 import slic_superpixels          as ssp
-import extract_features          as ef
+import surf_and_gabor_features   as ef
 import svm
 import os
 import warnings

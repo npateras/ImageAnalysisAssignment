@@ -22,7 +22,7 @@ def show_slic(image, segments):
 
 # Get the individual superpixels in a list
 def get_slic_superpixels(image, superpixels_number=100, gray=False):
-    print("Started SLIC segmentation...")
+    print("[!] Started SLIC segmentation [!]")
     superpixels_list = []
     segments = calculate_slic_superpixels(image, superpixels_number, gray)
     for(i, segVal) in enumerate(np.unique(segments)):

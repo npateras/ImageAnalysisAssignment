@@ -1,6 +1,6 @@
 import cv2
-import numpy as np
-import slic_superpixels as ssp
+import numpy                   as np
+import slic_superpixels        as ssp
 
 # This is done to use multi-threads to have faster results.
 cv2.setUseOptimized(True)
@@ -32,7 +32,7 @@ def display_image(img, name="Image"):
     cv2.waitKey(0)
 
 
-def display_end_result(original_img, gray_img, colors):
+def display_end_result(original_img, gray_img, colors, sample_img):
     segments = ssp.calculate_slic_superpixels(gray_img, gray=True)
     (h, w) = gray_img.shape
     a = []
@@ -53,6 +53,12 @@ def display_end_result(original_img, gray_img, colors):
 
     rgb = lab2rgb(predicted_image)
 
-    cv2.imshow("Original - Colored LAB - Colored RGB", np.hstack([original_img, predicted_image, rgb]))
-    cv2.imshow("Gray Image", gray_img)
+    cv2.imshow("Original", np.hstack([original_img]))
+    cv2.imshow("Colored LAB", np.hstack([predicted_image]))
+    cv2.imshow("Colored RGB", np.hstack([rgb]))
+    cv2.imshow("Grayscale Image", gray_img)
+
+    sample_img_slic = ssp.calculate_slic_superpixels(load_rgb_image(sample_img), 100, False)
+    ssp.show_slic(load_rgb_image(sample_img), sample_img_slic)
+
     cv2.waitKey(0)

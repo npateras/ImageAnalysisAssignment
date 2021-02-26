@@ -1,5 +1,5 @@
 from skimage.segmentation import slic, mark_boundaries
-import utilities as imf
+import utilities as utils
 import cv2
 import numpy as np
 
@@ -17,7 +17,7 @@ def calculate_slic_superpixels(image, superpixels_number=100, gray=False):
 # Displaying SLIC segmentation using mark boundaries
 def show_slic(image, segments):
     marked_image = mark_boundaries(image, segments)
-    imf.display_image(marked_image, name="SLIC superpixels")
+    utils.display_image(marked_image, name="SLIC Superpixels (100)")
 
 
 # Get the individual superpixels in a list

@@ -4,6 +4,7 @@ import pickle
 import os
 
 
+# Fit kmeans and save it with pickle library.
 def fit_and_save_kmeans(lab_images):
     if os.path.exists("fitted_kmeans.sav"):
         print("The fitted KMeans was already saved, if you want to repeat the process you need to delete the file and "
